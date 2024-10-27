@@ -4,7 +4,7 @@ const WebLayout = () => {
   return (
     <>
     <div>
-      
+      <Outlet />
     </div>
     </>
   )
