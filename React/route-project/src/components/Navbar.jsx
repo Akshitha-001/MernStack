@@ -1,6 +1,20 @@
-import React from 'react'
+import {NavLink} from "react-router-dom"
 
 const Navbar = () => {
+   const Linksdata = [
+        {
+            title: 'Home',
+            path: '/'
+        },
+        {
+            title: 'Products',
+            path: '/product'
+        },
+        {
+            title: 'Contact',
+            path: '/contact'
+        }
+    ]
    
   return (
     <>
@@ -9,11 +23,15 @@ const Navbar = () => {
             Max Store
           </div>
           <div className='w-[40%] flex justify-start items-center'>
-            <ul className='w-full flex flex-row justify-end items-center gap-8 font-semibold'>
-                <li>Home</li>
-                <li>Products</li>
-                <li>Contact</li>
-            </ul>
+              <div className='w-full h-full flex flex-row justify-end items-center gap-8 font-bold'>
+                        {Linksdata.map((link, index) => (
+                            <NavLink to={link.path} key={index} className='h-[65%] w-20 hover:bg-purple-500 hover:text-white flex justify-center items-center rounded-sm'>
+                                {link.title}
+                            </NavLink>
+                        ))
+                        }
+                    </div>
+            
 
           </div>
         </div>  
