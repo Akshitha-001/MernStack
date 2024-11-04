@@ -18,9 +18,9 @@ const ProductSchema =new  mongoose.Schema(
             type:Number,
             required:true
 
-        }
+        },
     
     })
 
-const Products =mongoose.node1("Products",ProductSchema)
+const Products =mongoose.model("Products",ProductSchema)
 module.exports=mongoose
