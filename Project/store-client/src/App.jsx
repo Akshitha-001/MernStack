@@ -15,6 +15,8 @@ const App = () => {
                         <Route path='/products' element={<Products />} />
                         <Route path='/contact' element={<Contact />} />
                     </Route>
+                    <Route element={<AdminLayout />}></Route>
+                    <Route path='/admin/dashboard' element={<AdminDashboard/>} />
                 </Routes>
             </BrowserRouter>
         </>
