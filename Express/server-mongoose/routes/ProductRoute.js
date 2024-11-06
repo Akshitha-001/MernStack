@@ -16,7 +16,7 @@ router.post('/add', async (req, res) => {
         const neworder = new Orders(req.body)
         const { uid, pid, phone, address, total } = neworder
         if (!uid || !pid || !email || !phone || !address || total) {
-            res.send(401).json({ message: "All fields required" })
+            res.send(400).json({ message: "All fields required" })
         }
         //TODO : Add User & Product Validation 
         await neworder.save()
