@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const Users = require('../models/UsersModel')
-const bcrypt=require('bcrpyt')
+
 router.get('/all', async (req, res) => {
     try {
         const users = await Users.find()
@@ -16,29 +16,19 @@ router.post('/add', async (req, res) => {
         const newuser = new Users(req.body)
         const { name, email, phone, password } = newuser
         if (!name || !email || !phone || !password) {
-           return  res.status(400).json({ message: "All fields required" })
+            res.status(400).json({ message: "All fields required" })
         }
 
         //TODO : Add User Email & Phone Validation
 
-        const existingmail = await Users.findOne({email})
-        if(existingmail){
-            res.status(500).json({message:`User with ${email} already exists!`})
-        }
-        // const EmailCheck = await Users.findOne({ email: email })
-        // if (EmailCheck) {
-        //     res.send(500).json({ message: `User with ${email} already exists !` })
-        // }
-        //Phone
-        const existingphone = await Users.findOne({phone})
-        if(existingphone){
-            res.status(500).json({message:`User with ${phone} already exists!`})
+        //Email
 
-    
+        //Phone
+
         await newuser.save()
-        return res.status(200).json(newuser)
-    }}  catch (error) {
-        return res.status(500).json({ message: error.message })
+        res.status(200).json(newuser)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
     }
 })
 

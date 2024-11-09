@@ -1,20 +1,16 @@
-const express=require('express')
-const app=express()
-const Port=4000
+const express = require('express')
+const app = express()
+const port = 3000
+app.use(express.json())
 const db = require('./config/db')
+const Products = require('./routes/ProductRoute')
+const Users = require('./routes/UserRoute')
+const Orders = require('./routes/OrderRoute')
+const Auth = require('./routes/AuthRoute')
+app.get('/', (req, res) => res.status(200).json({ message: "Welcome" }))
+app.use('/products', Products)
+app.use('/users', Users)
+app.use('/orders', Orders)
+app.use('/auth', Auth)
 
-
-
-
-//const Products=require('./models/ProductsModel')
-//const Users = require('./models/UserModel')
-
-const Products=require('./routes/ProductRoute')
-app.get('/',(req,res)=>{
-    res.status(200).json({ message:"Hello"});
-})
-app.use('/products',Products)
-
-
-app.listen(Port,(()=>console.log(`Listening on: ${Port}`))
-)
+app.listen(port, (() => console.log(`Listening on ${port}`)))

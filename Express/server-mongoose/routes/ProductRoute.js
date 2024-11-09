@@ -1,54 +1,58 @@
 const express = require('express')
 const router = express.Router();
-const Orders = require('../models/OrdersModel')
+const Products = require('../models/ProductsModel')
 
+// Method : GET  || API : localhost:3000/products/all
 router.get('/all', async (req, res) => {
     try {
-        const orders = await Orders.find()
-        res.status(200).json(orders)
+        const products = await Products.find()
+        res.status(200).json(products)
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
 })
 
+// Method : POST  || API : localhost:3000/products/add
 router.post('/add', async (req, res) => {
     try {
-        const neworder = new Orders(req.body)
-        const { uid, pid, phone, address, total } = neworder
-        if (!uid || !pid || !email || !phone || !address || total) {
-            res.send(400).json({ message: "All fields required" })
+        const newproduct = new Products(req.body)
+        const { name, img, price } = newproduct
+        if (!name || !img || !price) {
+            res.status(400).json({ message: "All fields required" })
         }
-        //TODO : Add User & Product Validation 
-        await neworder.save()
-        res.status(200).json(neworder)
+        await newproduct.save()
+        res.status(200).json(newproduct)
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
 })
 
+// Method : PUT  || API : localhost:3000/products/edit/_id
+//ERROR 404 Not Found
 router.put('/edit/:id', async (req, res) => {
     try {
         const id = req.params.id
-        const existingorder = await Orders.findOne({ _id: id })
-        if (!existingorder) {
-            res.send(404).json({ message: "Order not found" })
+        const existingproduct = await Products.findOne({ _id: id })
+        if (!existingproduct) {
+            res.status(404).json({ message: "Product not found" })
         }
-        const updatedorder = await Orders.findByIdAndUpdate(id, req.body, { new: true })
-        res.status(200).json(updatedorder)
+        const updatedproduct = await Products.findByIdAndUpdate(id, req.body, { new: true })
+        res.status(200).json(updatedproduct)
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
 })
 
+// Method : DELETE  || API : localhost:3000/products/delete/_id
 router.delete('/delete/:id', async (req, res) => {
     try {
         const id = req.params.id
-        const existingorder = await Orders.findOne({ _id: id })
-        if (!existingorder) {
-            res.send(404).json({ message: "Order not found" })
+        const existingproduct = await Products.findOne({ _id: id })
+        if (!existingproduct) {
+            res.status(404).json({ message: "Product not found" })
         }
-        await Orders.findByIdAndDelete(id)
-        res.status(200).json({ message: "Order Deleted" })
+        await Products.findByIdAndDelete(id)
+        res.status(200).json({ message: "Product Deleted" })
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
@@ -56,3 +60,21 @@ router.delete('/delete/:id', async (req, res) => {
 
 
 module.exports = router
+
+// 1.GET
+// 2.POST
+// 3.PUT
+// 4.DELETE
+
+// 1.READ
+// 2.CREATE
+// 3.UPDATE
+// 4.DELETE
+
+
+// 200 -> OK
+// 404 -> NOT FOUND
+// 500 -> INTERNAL SERVER ERROR
+// 201 -> CREATED
+// 400 -> BAD Request
+// 401 -> UnAuthorized
