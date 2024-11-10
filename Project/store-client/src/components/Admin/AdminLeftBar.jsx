@@ -3,31 +3,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const AdminLeftBar = () => {
-  const Linksdata = [
-    {
-      title: 'Dashboard',
-      path: '/admin/dashboard'
-    },
-    {
-      title: 'Products',
-      path: '/admin/products'
-    },
-    {
-      
-      "title":'Orders',
-      path:'/admin/orders'
-    },
-    {
-       
-      "title":Users,
-      path:'/admin/users'
-    },
-    {
-      
-      "title":Settings,
-      path:'/admin/settings'
-    }
-  ]
   return (
     <div className='w-full h-screen shadow-purple-400 shadow-md flex justify-center items-center'>
       <div className='h-full w-full flex flex-col'>
