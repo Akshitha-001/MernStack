@@ -6,6 +6,10 @@ import Products from './pages/Products'
 import WebLayout from './layout/WebLayout'
 import AdminLayout from './layout/AdminLayout'
 import AdminDashboard from './pages/Admin/AdminDashboard'
+import AdminProducts   from './pages/Admin/AdminProducts'
+import AdminOrders from './pages/Admin/AdminOrders'
+import AdminSettings from './pages/Admin/AdminSettings'
+import AdminUsers from './pages/Admin/AdminUsers'
 
 // import {} from 'react'
 const App = () => {
@@ -20,6 +24,10 @@ const App = () => {
                     </Route>
                     <Route element={<AdminLayout />}>
                     <Route path='/admin/dashboard' element={<AdminDashboard/>} />
+                    <Route path='/admin/products' element={<AdminProducts/>} />
+                    <Route path='/admin/orders' element={<AdminOrders/>} />
+                    <Route path='/admin/users' element={<AdminUsers/>} />
+                    <Route path='/admin/settings' element={<AdminSettings/>} />
                     </Route>
                 </Routes>
             </BrowserRouter>
