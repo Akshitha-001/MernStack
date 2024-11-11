@@ -29,6 +29,35 @@ const AdminProducts = () => {
               </button>
             </td>
           </tr>
+          <tr>
+            <td className='p-4'>Product2 </td>
+            <td className='p-4'>500</td>
+            <td className='p-4 flex h-full w-full flex-row justify-start items-center gap-4'>
+              <button className='h-15 w-15 border-blue-500 border-2 p-1 rounded-md text-blue-500 shadow-md
+               hover:bg-blue-500 hover:text-white hover:shadow-blue-500'>
+                <Pencil />
+              </button>
+              <button className='h-15 w-15 border-red-500 border-2 p-1 rounded-md text-red-500 shadow-md
+               hover:bg-red-500 hover:text-white hover:shadow-red-500'>
+                <Trash />
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td className='p-4'>Product3 </td>
+            <td className='p-4'>700</td>
+            <td className='p-4 flex h-full w-full flex-row justify-start items-center gap-4'>
+              <button className='h-15 w-15 border-blue-500 border-2 p-1 rounded-md text-blue-500 shadow-md
+               hover:bg-blue-500 hover:text-white hover:shadow-blue-500'>
+                <Pencil />
+              </button>
+              <button className='h-15 w-15 border-red-500 border-2 p-1 rounded-md text-red-500 shadow-md
+               hover:bg-red-500 hover:text-white hover:shadow-red-500'>
+                <Trash />
+              </button>
+            </td>
+          </tr>
+
         </tbody>
       </table>
     </div>
