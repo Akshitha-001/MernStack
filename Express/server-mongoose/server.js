@@ -15,5 +15,6 @@ app.use('/products', Products)
 app.use('/users', Users)
 app.use('/orders', Orders)
 app.use('/auth', Auth)
+app.use('/api', orderRoutes)
 
 app.listen(port, (() => console.log(`Listening on ${port}`)))
