@@ -1,14 +1,26 @@
+
 import axios from 'axios'
 
 
-const API = 'http://localhost:3000/products/all'
+const API = 'http://localhost:3000'
 
-//ProjectEndPoints
+// ProductEndPonts
 const getProducts = () => axios.get(`${API}/products/all`)
+const addProduct = (product) => axios.post(`${API}/products/add`, product)
+
+const deleteProduct=(id)=>axios.delete(`${API}/products/delete/${id}`)
 
 
+
+// OrderEndPonts
 const getOrders = () => axios.get(`${API}/orders/all`)
 
 
+//UserEndPoints
+const getUsers = () => axios.get(`${API}/users/all`)
 
-export {getProducts} 
+//AuthEndponts
+const Login = (credentials) => axios.post(`${API}/auth/login`, credentials)
+const Register = (credentials) => axios.post(`${API}/auth/register`, credentials)
+
+export { getProducts, getOrders, getUsers, Login, Register,addProduct,deleteProduct }
