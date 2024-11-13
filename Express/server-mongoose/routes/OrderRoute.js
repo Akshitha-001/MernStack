@@ -9,6 +9,7 @@ router.get('/all', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
+    res.send('Orders List')
 })
 
 router.post('/add', async (req, res) => {
