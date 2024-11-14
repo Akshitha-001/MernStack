@@ -1,11 +1,12 @@
-const mongoose=require('mongoose')
+const mongoose = require('mongoose')
 
-mongoose.connect("mongodb+srv://Akshitha:01102004@in-aws.qxas7.mongodb.net/max-store?retryWrites=true&w=majority&appName=In-AWS")
+mongoose.connect("mongodb+srv://maxneodev:1811321@in-aws.6mvyl.mongodb.net/max-store?retryWrites=true&w=majority&appName=In-AWS")
 
-const connection=mongoose.connection;
+const connection = mongoose.connection;
 
-connection.on('connected',()=>{console.log("DB Connected")})
-connection.on('error',()=>{console.log("DB error")})
-module.exports=mongoose
+connection.on('connected', () => (console.log("DB Connected")))
+connection.on('error', () => (console.log("DB Error")))
 
-//const db=require('./config/db')
+module.exports = mongoose
+
+// const db = require('./config/db')

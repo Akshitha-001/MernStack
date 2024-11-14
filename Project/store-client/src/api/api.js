@@ -1,10 +1,25 @@
+
 import axios from 'axios'
 
 
-const API = 'https://671b70ef2c842d92c37fec0c.mockapi.io/prodcutsapp/products'
+const API = 'http://localhost:3000'
+
+// ProductEndPonts
+const getProducts = () => axios.get(`${API}/products/all`)
+const addProduct = (product) => axios.post(`${API}/products/add`, product)
+const editProduct = (product, id) => axios.put(`${API}/products/edit/${id}`, product)
+const deleteProduct = (id) => axios.delete(`${API}/products/delete/${id}`)
+
+// OrderEndPonts
+const getOrders = () => axios.get(`${API}/orders/all`)
 
 
-const getProducts = () => axios.get(API)
+//UserEndPoints
+const getUsers = () => axios.get(`${API}/users/all`)
+const addUsers = (users) => axios.post(`${API}/users/add`, users)
 
+//AuthEndponts
+const Login = (credentials) => axios.post(`${API}/auth/login`, credentials)
+const Register = (credentials) => axios.post(`${API}/auth/register`, credentials)
 
-export { getProducts }
+export { getProducts, getOrders, getUsers,addUsers, Login, Register, addProduct, deleteProduct, editProduct }

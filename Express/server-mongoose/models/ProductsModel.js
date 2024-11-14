@@ -24,3 +24,9 @@ const ProductSchema =new  mongoose.Schema(
 
 const Products =mongoose.model("Products",ProductSchema)
 module.exports=Products;
+
+
+// name: string :required
+// email: string: required : unique
+// phone: number: required : unique
+// address: string 

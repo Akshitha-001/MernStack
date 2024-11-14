@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import { getProducts } from '../api/api'
@@ -57,7 +58,7 @@ const Products = () => {
             <div className='w-screen h-full flex justify-start items-start flex-row flex-wrap mt-14 mb-12 gap-y-20 gap-x-2'>
 
                 {products.map((product, index) => (
-                    <ProductCard img={product.img} name={product.name} price={product.price} key={product.id} />
+                    <ProductCard img={product.img} name={product.name} price={product.price} key={product._id} />
                 ))
                 }
             </div>

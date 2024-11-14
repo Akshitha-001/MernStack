@@ -1,15 +1,50 @@
-import React from 'react'
+//import React from 'react'
+import { NavLink } from 'react-router-dom'
+
 
 const AdminLeftBar = () => {
+  const Linksdata=[
+    {
+      title: 'Dashboard',
+      path:'./admin/dashboard'
+    },
+    {
+      title: 'Products',
+      path: '/admin/products'
+    },
+    {
+      title: 'Orders',
+      path: '/admin/orders'
+    },
+    {
+      title: 'Users',
+      path: '/admin/users'
+    },
+    {
+      title: 'Settings',
+      path: '/admin/settings'
+    }
+
+  ]
   return (
     <div className='w-full h-screen shadow shadow-md flex justify-center items-center'>
       
       <div className='h-full w-full flex flex-col'>
-        <div className='h-[10%] flexn justify-center font-bold text-center text-purple-500'>
+        <div className='h-[10%] flex justify-center font-bold text-center text-purple-500'>
         Max Store
         </div>
         <div className='h-[80%] w-full flex flex-col items-center font-bold'>
-       Links
+        {Linksdata.map((link, index) => (
+            <NavLink to={link.path} key={index} className='h-[10%] w-full px-8 hover:bg-purple-500/90 hover:text-white flex justify-start items-center rounded-sm shadow-md font-bold'>
+              {link.title}
+            </NavLink>
+          ))
+          }
+        </div>
+        <div className='h-[10%] w-full flex items-end'>
+          <div className=' px-8 bg-red-500 w-full h-2/3 text-white flex justify-start font-bold items-center'>
+            Logout
+          </div>
         </div>
 
       </div>
