@@ -9,12 +9,13 @@ router.get('/all', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
+    res.send('Orders List')
 })
 
 router.post('/add', async (req, res) => {
     try {
         const neworder = new Orders(req.body)
-        const { uid, pid,email, phone, address, total } = neworder
+        const { uid, pid, phone, address, total } = neworder
         if (!uid || !pid || !email || !phone || !address || total) {
            return res.status(400).json({ message: "All fields required" })
         }

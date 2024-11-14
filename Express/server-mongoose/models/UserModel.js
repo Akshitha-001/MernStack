@@ -8,23 +8,19 @@ const UsersSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true
+        unique:true
     },
     phone: {
         type: Number,
         required: true,
-        unique: true
-    },
-    role: {
-        type: String,
-        enum: ["ADMIN", "USER"],
-        required: true
+        unique:true
     },
     password: {
         type: String,
         required: true,
+        // unique:true
     },
-    address: {
+    password: {
         type: String,
         required: false,
     },
@@ -35,9 +31,3 @@ const Users = mongoose.model("Users", UsersSchema)
 module.exports = Users
 
 
-<<<<<<< HEAD
-=======
-const Users= mongoose.model("Users",UsersSchema)
-
-module.exports= Users
->>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df

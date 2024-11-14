@@ -58,7 +58,11 @@ const Products = () => {
             <div className='w-screen h-full flex justify-start items-start flex-row flex-wrap mt-14 mb-12 gap-y-20 gap-x-2'>
 
                 {products.map((product, index) => (
+<<<<<<< HEAD
                     <ProductCard img={product.img} name={product.name} price={product.price} key={product._id} />
+=======
+                    <ProductCard img={product.img} name={product.title} price={product.price} key={product._id} />
+>>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
                 ))
                 }
             </div>

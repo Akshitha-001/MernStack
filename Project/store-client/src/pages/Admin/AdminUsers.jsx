@@ -1,12 +1,20 @@
+<<<<<<< HEAD
 import React, { useEffect, useRef, useState } from 'react'
 import AdminPageHeader from '../../components/Admin/AdminPageHeader'
 import { Loader2, Pencil, Plus, Trash, TriangleAlert, X } from 'lucide-react'
 import { getUsers, addUser, editUser, deleteUser } from '../../api/api'
 import { toast } from 'sonner'
+=======
+import React, { useEffect, useState } from 'react'
+import AdminPageHeader from '../../components/Admin/AdminPageHeader'
+import { Loader2, Pencil, Trash, TriangleAlert } from 'lucide-react'
+import { getUsers } from '../../api/api'
+>>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
 
 const AdminUsers = () => {
   const [users, setUsers] = useState(null)
   const [loading, setLoading] = useState(true)
+<<<<<<< HEAD
   const [currentUser, setCurrentUser] = useState(null)
   const [showAdd, setShowAdd] = useState(false)
   const [showEdit, setShowEdit] = useState(false)
@@ -15,12 +23,19 @@ const AdminUsers = () => {
   const phoneRef = useRef(0)
   const passwordRef = useRef('')
   const roleRef = useRef('')
+=======
+
+>>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
   const fetchData = async () => {
     try {
       const res = await getUsers()
       if (res.status === 200) {
         setUsers(res.data)
       }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
     } catch (error) {
       console.error(error)
     }
@@ -28,6 +43,7 @@ const AdminUsers = () => {
       setLoading(false)
     }
   }
+<<<<<<< HEAD
   const handleAdd = async (e) => {
     e.preventDefault()
 
@@ -88,11 +104,17 @@ const AdminUsers = () => {
       console.error(error)
     }
   }
+=======
+>>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
 
   useEffect(() => {
     fetchData()
   }, [])
+<<<<<<< HEAD
 
+=======
+  console.log(users)
+>>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
   if (loading) {
     return (
       <>
@@ -118,19 +140,26 @@ const AdminUsers = () => {
     <div className='w-full flex flex-col justify-start items-start'>
       <div className='w-full flex flex-row justify-between items-center my-4 shadow-md rounded-md p-1 border'>
         <AdminPageHeader title='Users' />
+<<<<<<< HEAD
         <button className='w-10 h-10 font-bold flex justify-center items-center border-2 border-green-500 rounded-md
          text-green-500 shadow-md hover:text-white hover:bg-green-500 hover:shadow-md
           hover:shadow-green-400'
           onClick={() => setShowAdd(!showAdd)} >
           <Plus className='w-8 h-8' />
         </button>
+=======
+>>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
       </div>
       <table className='w-full h-full border-collapse border shadow-lg rounded-md'>
         <thead className='shadow-md font-bold text-purple-500 text-left rounded-md'>
           <tr>
+<<<<<<< HEAD
             <th className='p-6'>UID</th>
             <th className='p-6'>Name</th>
             <th className='p-6'>Role</th>
+=======
+            <th className='p-6'>Name</th>
+>>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
             <th className='p-6'>Email</th>
             <th className='p-6'>Phone</th>
             <th className='p-6'>Actions</th>
@@ -141,6 +170,7 @@ const AdminUsers = () => {
           {
             users.map((user, index) => (
               <tr key={index}>
+<<<<<<< HEAD
                 <td className='p-4'>{user._id} </td>
                 <td className='p-4'>{user.name} </td>
                 <td className='p-4'>{user.role} </td>
@@ -155,6 +185,18 @@ const AdminUsers = () => {
                   <button className='h-15 w-15 border-red-500 border-2 p-1 rounded-md text-red-500 shadow-md
                hover:bg-red-500 hover:text-white hover:shadow-red-500'
                     onClick={() => { handleDelete(user._id) }}>
+=======
+                <td className='p-4'>{user.name}</td>
+                <td className='p-4'>{user.email}</td>
+                <td className='p-4'>{user.phone} </td>
+                <td className='p-4 flex h-full w-full flex-row justify-start items-center gap-4'>
+                  <button className='h-15 w-15 border-blue-500 border-2 p-1 rounded-md text-blue-500 shadow-md
+               hover:bg-blue-500 hover:text-white hover:shadow-blue-500'>
+                    <Pencil />
+                  </button>
+                  <button className='h-15 w-15 border-red-500 border-2 p-1 rounded-md text-red-500 shadow-md
+               hover:bg-red-500 hover:text-white hover:shadow-red-500'>
+>>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
                     <Trash />
                   </button>
                 </td>
@@ -163,6 +205,7 @@ const AdminUsers = () => {
           }
         </tbody>
       </table>
+<<<<<<< HEAD
 
       {showAdd && (
         <>
@@ -216,6 +259,8 @@ const AdminUsers = () => {
           </div>
         </>
       )}
+=======
+>>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
     </div>
   )
 }

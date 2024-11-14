@@ -14,6 +14,7 @@ const validateToken = (req, res, next) => {
         if (exp < (Date.now() / 1000)) {
             return res.status(500).json({ message: "Token Expired" })
         }
+<<<<<<< HEAD
         const role = validate.role
         if (!role) {
             return res.status(500).json({ message: "Invalid Access" })
@@ -42,6 +43,9 @@ const validateTokenAdmin = (req, res, next) => {
         if (role !== "ADMIN") {
             return res.status(500).json({ message: "Invalid Access" })
         }
+=======
+
+>>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
         next()
     } catch (error) {
         return res.status(500).json({ message: "Invalid token" })
@@ -49,4 +53,7 @@ const validateTokenAdmin = (req, res, next) => {
 }
 
 
+<<<<<<< HEAD
 module.exports = validateToken;
+=======
+>>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
