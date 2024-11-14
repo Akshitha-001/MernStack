@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-//import React from 'react'
-=======
-import React from 'react'
->>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
+import react from 'react'
 
 const TwClasses = () => {
     //h-96          : predefined height (24rem)

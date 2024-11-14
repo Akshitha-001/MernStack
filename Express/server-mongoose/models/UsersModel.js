@@ -35,9 +35,3 @@ const Users = mongoose.model("Users", UsersSchema)
 module.exports = Users
 
 
-<<<<<<< HEAD
-=======
-const Users= mongoose.model("Users",UsersSchema)
-
-module.exports= Users
->>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df

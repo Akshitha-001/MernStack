@@ -1,11 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import AdminPageHeader from '../../components/Admin/AdminPageHeader'
 import { Loader2, Pencil, Plus, Trash, TriangleAlert, X } from 'lucide-react'
-<<<<<<< HEAD
 import { getProducts, addProduct, deleteProduct, editProduct } from '../../api/api'
-=======
-import { getProducts, addProduct, deleteProduct } from '../../api/api'
->>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
 import { toast } from 'sonner'
 
 const AdminProducts = () => {
@@ -13,15 +9,10 @@ const AdminProducts = () => {
   const [products, setProducts] = useState(null)
   //true (shows loading screen) -> false(hide loading screen) | Condition Render
   const [loading, setLoading] = useState(true)
-<<<<<<< HEAD
   //new
   const [currentProduct, setCurrentProduct] = useState(null)
   const [showAdd, setShowAdd] = useState(false)
   const [showEdit, setShowEdit] = useState(false)
-=======
-
-  const [showAdd, setShowAdd] = useState(false)
->>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
   const titleRef = useRef('')
   const imgRef = useRef('')
   const priceRef = useRef(0)
@@ -29,11 +20,7 @@ const AdminProducts = () => {
     try {
       const res = await getProducts()
       if (res.status === 200) {
-<<<<<<< HEAD
         // console.log(res.data)
-=======
-        console.log(res.data)
->>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
         setProducts(res.data)
       }
     } catch (error) {
@@ -53,26 +40,18 @@ const AdminProducts = () => {
     try {
       const response = await addProduct(product)
       if (response.status === 200) {
-<<<<<<< HEAD
         // console.log("Product Added")
         toast.success('Product Added')
-=======
-        console.log("Product Added")
->>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
         setShowAdd(false)
         fetchData()
       }
 
     } catch (error) {
-<<<<<<< HEAD
       toast.error("Error while Adding")
-=======
->>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
       console.error(error)
     }
 
   }
-<<<<<<< HEAD
   const editHelper = (product) => {
     console.log(product)
     setCurrentProduct(product)
@@ -81,7 +60,7 @@ const AdminProducts = () => {
   const handleEdit = async (e) => {
     e.preventDefault()
     const product = {
-      name: titleRef.current.value,
+      Name: titleRef.current.value,
       img: imgRef.current.value,
       price: priceRef.current.value
     }
@@ -109,24 +88,6 @@ const AdminProducts = () => {
       console.error(error)
     }
   }
-=======
-
-  const hondleDelete=async(id)=>{
-    try{
-      const response= await deleteProduct(id)
-      if (response.status === 200) {
-        console.log("Product deleted!")
-
-       toast.success('Product Deleted')
-        fetchData()
-    }
-  } catch(error){
-    toast.error("Error while deleting")
-    console.error(error)
-  }
-}
-
->>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
 
   useEffect(() => {
     fetchData()
@@ -181,29 +142,17 @@ const AdminProducts = () => {
               <tr key={index}>
                 <td className='p-4'>{product._id} </td>
                 <td className='flex justify-start px-4 items-center'><img src={product.img} alt={product.title} className='h-12 w-12 object-cover rounded-full shadow-md bg-purple-500' /></td>
-<<<<<<< HEAD
                 <td className='p-4'>{product.title} </td>
                 <td className='p-4'>{product.price}</td>
                 <td className='p-4 flex h-full w-full flex-row justify-start items-center gap-4'>
                   <button className='h-15 w-15 border-blue-500 border-2 p-1 rounded-md text-blue-500 shadow-md
                hover:bg-blue-500 hover:text-white hover:shadow-blue-500'
                     onClick={() => { editHelper(product) }}>
-=======
-                <td className='p-4'>{product.name} </td>
-                <td className='p-4'>{product.price}</td>
-                <td className='p-4 flex h-full w-full flex-row justify-start items-center gap-4'>
-                  <button className='h-15 w-15 border-blue-500 border-2 p-1 rounded-md text-blue-500 shadow-md
-               hover:bg-blue-500 hover:text-white hover:shadow-blue-500'>
->>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
                     <Pencil />
                   </button>
                   <button className='h-15 w-15 border-red-500 border-2 p-1 rounded-md text-red-500 shadow-md
                hover:bg-red-500 hover:text-white hover:shadow-red-500'
-<<<<<<< HEAD
                     onClick={() => { handleDelete(product._id) }}>
-=======
-                onClick={()=>{handleDelete(product._id)}}>
->>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
                     <Trash />
                   </button>
                 </td>
@@ -225,22 +174,15 @@ const AdminProducts = () => {
                   </div>
                 </div>
                 <form className='h-[70%] w-[80%] flex flex-col justify-center items-center gap-8' onSubmit={handleAdd}>
-<<<<<<< HEAD
                   <input ref={titleRef} type="text" name="" id="title" placeholder='Title' className='w-full shadow-sm outline-none bg-[#f5f5f7] border-b-2 border-transparent p-4 focus:shadow-lg focus:border-b-2 focus:border-green-400 rounded-sm' required autoFocus />
                   <input ref={imgRef} type="text" name="" id="img" placeholder='Image URL' className='w-full shadow-sm outline-none bg-[#f5f5f7] border-b-2 border-transparent p-4 focus:shadow-lg focus:border-b-2 focus:border-green-400 rounded-sm' required />
                   <input ref={priceRef} type="number" name="" id="price" placeholder='Price' className='w-full shadow-sm outline-none bg-[#f5f5f7] border-b-2 border-transparent p-4 focus:shadow-lg focus:border-b-2 focus:border-green-400 rounded-sm' required />
-=======
-                  <input ref={titleRef} type="text" name="" id="title" placeholder='Title' className='w-full shadow-sm outline-none bg-[#f5f5f7] border-b-2 border-transparent p-4 focus:shadow-lg focus:border-b-2 focus:border-purple-400 rounded-sm' required />
-                  <input ref={imgRef} type="text" name="" id="img" placeholder='Image URL' className='w-full shadow-sm outline-none bg-[#f5f5f7] border-b-2 border-transparent p-4 focus:shadow-lg focus:border-b-2 focus:border-purple-400 rounded-sm' required />
-                  <input ref={priceRef} type="number" name="" id="price" placeholder='Price' className='w-full shadow-sm outline-none bg-[#f5f5f7] border-b-2 border-transparent p-4 focus:shadow-lg focus:border-b-2 focus:border-purple-400 rounded-sm' required />
->>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
                   <button type="submit" className="w-full h-[3rem]  shadow-lg shadow-gray-400 hover:shadow-green-400 bg-green-500 text-white rounded-sm outline-none">Add</button>
                 </form>
               </div>
             </div>
           </div>
         </>
-<<<<<<< HEAD
       )}
       {showEdit && (
         <>
@@ -264,11 +206,6 @@ const AdminProducts = () => {
           </div>
         </>
       )}
-=======
-      )
-
-      }
->>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
     </div>
   )
 }

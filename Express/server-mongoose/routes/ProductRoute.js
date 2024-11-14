@@ -2,6 +2,15 @@ const express = require('express')
 const router = express.Router();
 const Products = require('../models/ProductsModel')
 const validate = require('../config/auth')
+
+router.get('/count', async (req, res) => {
+    try {
+        const count = await Products.countDocuments()
+        return res.status(200).json({ count: count })
+    } catch (error) {
+        return res.status(500).json({ message: error.message })
+    }
+})
 // Method : GET  || API : localhost:3000/products/all
 router.get('/all', async (req, res) => {
     try {
@@ -16,32 +25,24 @@ router.get('/all', async (req, res) => {
 router.post('/add', async (req, res) => {
     try {
         const newproduct = new Products(req.body)
-        const { name, img, price } = newproduct
-        if (!name || !img || !price) {
-<<<<<<< HEAD
-           return res.status(400).json({ message: "All fields required" })
-        }
-        await newproduct.save()
-       return  res.status(200).json(newproduct)
-    } catch (error) {
-       return res.status(500).json({ message: error.message })
-=======
+        const { title, img, price } = newproduct
+        if (!title || !img || !price) {
             return res.status(400).json({ message: "All fields required" })
         }
         await newproduct.save()
         return res.status(200).json(newproduct)
     } catch (error) {
         return res.status(500).json({ message: error.message })
->>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
     }
 })
 
+
 // Method : PUT  || API : localhost:3000/products/edit/_id
-<<<<<<< HEAD
-router.put('/edit/:id',  async (req, res) => {
-=======
+
+
+
 router.put('/edit/:id', async (req, res) => {
->>>>>>> 7584501df4f9fa56160643df987df038e7c5a8df
+
     try {
         const id = req.params.id
         const existingproduct = await Products.findOne({ _id: id })
