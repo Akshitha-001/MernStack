@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React { useEffect, useRef, useState } from 'react'
 import AdminPageHeader from '../../components/Admin/AdminPageHeader'
 import { Loader2, Pencil, Plus, Trash, TriangleAlert, X } from 'lucide-react'
 import { getUsers, addUser, editUser, deleteUser } from '../../api/api'
@@ -10,6 +10,7 @@ const AdminUsers = () => {
   const [currentUser, setCurrentUser] = useState(null)
   const [showAdd, setShowAdd] = useState(false)
   const [showEdit, setShowEdit] = useState(false)
+
   const nameRef = useRef('')
   const emailRef = useRef('')
   const phoneRef = useRef(0)
