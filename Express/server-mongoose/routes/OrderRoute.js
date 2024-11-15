@@ -19,7 +19,6 @@ router.get('/all', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
-    res.send('Orders List')
 })
 
 router.post('/add', async (req, res) => {
@@ -27,13 +26,13 @@ router.post('/add', async (req, res) => {
         const neworder = new Orders(req.body)
         const { uid, pid, phone, address, total } = neworder
         if (!uid || !pid || !email || !phone || !address || total) {
-           return res.status(400).json({ message: "All fields required" })
+            res.status(400).json({ message: "All fields required" })
         }
         //TODO : Add User & Product Validation 
         await neworder.save()
-        return res.status(200).json(neworder)
+        res.status(200).json(neworder)
     } catch (error) {
-        return res.status(500).json({ message: error.message })
+        res.status(500).json({ message: error.message })
     }
 })
 
@@ -42,12 +41,12 @@ router.put('/edit/:id', async (req, res) => {
         const id = req.params.id
         const existingorder = await Orders.findOne({ _id: id })
         if (!existingorder) {
-          return  res.status(404).json({ message: "Order not found" })
+            res.status(404).json({ message: "Order not found" })
         }
         const updatedorder = await Orders.findByIdAndUpdate(id, req.body, { new: true })
-       return res.status(200).json(updatedorder)
+        res.status(200).json(updatedorder)
     } catch (error) {
-       return res.status(500).json({ message: error.message })
+        res.status(500).json({ message: error.message })
     }
 })
 
@@ -56,12 +55,12 @@ router.delete('/delete/:id', async (req, res) => {
         const id = req.params.id
         const existingorder = await Orders.findOne({ _id: id })
         if (!existingorder) {
-           return res.status(404).json({ message: "Order not found" })
+            res.status(404).json({ message: "Order not found" })
         }
         await Orders.findByIdAndDelete(id)
-       return res.status(200).json({ message: "Order Deleted" })
+        res.status(200).json({ message: "Order Deleted" })
     } catch (error) {
-       return res.status(500).json({ message: error.message })
+        res.status(500).json({ message: error.message })
     }
 })
 
