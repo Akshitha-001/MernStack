@@ -19,6 +19,7 @@ const AdminUsers = () => {
   const fetchData = async () => {
     try {
       const res = await getUsers()
+      // console.log(res.data);
       if (res.status === 200) {
         setUsers(res.data)
       }
@@ -124,15 +125,27 @@ const AdminUsers = () => {
   if (!users || users.length === 0) {
     return (
       <>
-        <div className='w-screen h-[90vh] flex flex-col justify-center items-center'>
-          <TriangleAlert className='text-orange-400 h-12 w-12' />
-          <p>
-            No Users Available !
-          </p>
+        <div className='w-full h-full flex flex-col justify-start items-start'>
+          <div className='w-full flex flex-row justify-between items-center my-4 shadow-md rounded-md p-1 border'>
+            <AdminPageHeader title='Users' />
+            <button className='w-10 h-10 font-bold flex justify-center items-center border-2 border-green-500 rounded-md
+         text-green-500 shadow-md hover:text-white hover:bg-green-500 hover:shadow-md
+          hover:shadow-green-400'
+              onClick={() => setShowAdd(!showAdd)} >
+              <Plus className='w-8 h-8' />
+            </button>
+          </div>
+          <div className='h-[60vh] w-full flex flex-col justify-center items-center gap-3'>
+            <TriangleAlert className='text-orange-400 h-12 w-12' />
+            <p>
+              No Users Available !
+            </p>
+          </div>
         </div>
       </>
     )
   }
+
   return (
     <div className='w-full flex flex-col justify-start items-start'>
       <div className='w-full flex flex-row justify-between items-center my-4 shadow-md rounded-md p-1 border'>
@@ -165,7 +178,7 @@ const AdminUsers = () => {
                 <td className='p-4'>{user.role} </td>
                 <td className='p-4'>{user.email}</td>
                 <td className='p-4'>{user.phone}</td>
-                <td className='p-4 flex h-full w-full flex-row justify-start items-center gap-3'>
+                <td className='p-4 flex h-full w-full flex-row justify-start items-center gap-4'>
                   <button className='h-15 w-15 border-blue-500 border-2 p-1 rounded-md text-blue-500 shadow-md
                hover:bg-blue-500 hover:text-white hover:shadow-blue-500'
                     onClick={() => { editHelper(user) }}>
@@ -204,7 +217,6 @@ const AdminUsers = () => {
                   <input ref={emailRef} type="email" name="" id="email" placeholder='Email' className='w-full shadow-sm outline-none bg-[#f5f5f7] border-b-2 border-transparent p-4 focus:shadow-lg focus:border-b-2 focus:border-green-400 rounded-sm' required />
                   <input ref={phoneRef} type="number" name="" id="phone" placeholder='Phone' className='w-full shadow-sm outline-none bg-[#f5f5f7] border-b-2 border-transparent p-4 focus:shadow-lg focus:border-b-2 focus:border-green-400 rounded-sm' required />
                   <input ref={passwordRef} type="password" name="" id="password" placeholder='Password' className='w-full shadow-sm outline-none bg-[#f5f5f7] border-b-2 border-transparent p-4 focus:shadow-lg focus:border-b-2 focus:border-green-400 rounded-sm' required />
-                  <input ref={roleRef} type="role" name="" id="role" placeholder='Role' className='w-full shadow-sm outline-none bg-[#f5f5f7] border-b-2 border-transparent p-4 focus:shadow-lg focus:border-b-2 focus:border-green-400 rounded-sm' required />
                   <div className="select my-2">
                     <select name="format" id="format" defaultValue='ADMIN' ref={roleRef}>
                       <option value="ADMIN">Admin</option>

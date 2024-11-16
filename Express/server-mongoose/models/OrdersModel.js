@@ -9,10 +9,6 @@ const OrdersSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    email:{
-        type:String,
-        required:true,
-    },
     total: {
         type: String,
         required: true,
@@ -24,10 +20,6 @@ const OrdersSchema = new mongoose.Schema({
     address: {
         type: String,
         required: true,
-    }, 
-    orderedAt: {
-        type: Date,
-        default: Date.now,
     }
 })
 

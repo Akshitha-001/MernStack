@@ -1,29 +1,25 @@
-const mongoose=require('mongoose')
+const mongoose = require('mongoose')
 
+const ProductsSchema = new mongoose.Schema({
+    title: { // Property/Filed title
+        type: String, // Data type of the Property
+        required: true // Nullable(false) or NotNullable(true) 
+    },
+    img: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true,
+        // unique:true
+    },
+})
 
-const ProductSchema =new  mongoose.Schema(
-    {
-        name: {
-            type:String,
-            required:true
+const Products = mongoose.model("Products", ProductsSchema)
 
-        },
-        img : {
-            type:String,
-            required:true
+module.exports = Products
 
-        },
-
-        price : {
-            type:Number,
-            required:true
-
-        },
-    
-    })
-
-const Products =mongoose.model("Products",ProductSchema)
-module.exports=Products;
 
 
 // name: string :required

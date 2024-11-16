@@ -1,7 +1,7 @@
 import { ChartBar, DollarSign, Package2, ShoppingCart, User2, Users } from 'lucide-react'
 import React from 'react'
 
-const AdminDashboardHomeCards = ({ users, orders, products }) => {
+const AdminDashboardHomeCards = ({ products, orders, users }) => {
     return (
         <>
             {/* <div className="w-full flex flex-row justify-center items-center gap-6  px-3">

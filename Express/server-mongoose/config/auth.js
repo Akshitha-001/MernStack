@@ -10,11 +10,12 @@ const validateToken = (req, res, next) => {
     }
     try {
         const validate = jwt.verify(token, secretkey)
+        //Checking Expiry Date
         const exp = validate.exp
         if (exp < (Date.now() / 1000)) {
             return res.status(500).json({ message: "Token Expired" })
         }
-
+        //Checking Role
         const role = validate.role
         if (!role) {
             return res.status(500).json({ message: "Invalid Access" })
@@ -43,9 +44,6 @@ const validateTokenAdmin = (req, res, next) => {
         if (role !== "ADMIN") {
             return res.status(500).json({ message: "Invalid Access" })
         }
-
-
-
         next()
     } catch (error) {
         return res.status(500).json({ message: "Invalid token" })
@@ -53,6 +51,4 @@ const validateTokenAdmin = (req, res, next) => {
 }
 
 
-
-module.exports = validateToken;
-
+module.exports = { validateToken, validateTokenAdmin }
